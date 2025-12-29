@@ -1,65 +1,88 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Planet of Architect</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Planet of Architect — Ambiente de criação digital">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+:root {
+  --neon-green: #62ff8a;
+  --bg-dark: #000;
+}
 
-  <!-- PLANETA / AMBIENTE -->
-  <canvas id="matrix"></canvas>
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- CAMADA DE CONTEÚDO -->
-  <div class="planet-layer">
+body {
+  background: var(--bg-dark);
+  color: var(--neon-green);
+  font-family: 'Courier New', Courier, monospace;
+  overflow-x: hidden;
+}
 
-    <section class="info-block">
-      <h1>PLANET OF ARCHITECT</h1>
-      <p>
-        Este é um ambiente de criação digital.<br>
-        Aqui nascem sites simples, sólidos e livres.<br>
-        Nada é fechado. Nada é inflado. Tudo existe.
-      </p>
-    </section>
+/* CANVAS MATRIX */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
 
-    <section class="info-block">
-      <h2>O que é oferecido</h2>
-      <p>
-        • Sites institucionais simples<br>
-        • Sites informativos (jornal, revista, projetos)<br>
-        • Estruturas digitais para empresas<br>
-        • Ambientes estáveis, rápidos e independentes
-      </p>
-    </section>
+/* CAMADA DE CONTEÚDO */
+.planet-layer {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
 
-    <section class="info-block">
-      <h2>Como funciona</h2>
-      <p>
-        Você recebe um site funcional.<br>
-        Pode editar, copiar, mover, hospedar onde quiser.<br>
-        Não depende de plataformas, mensalidades ou terceiros.
-      </p>
-    </section>
+/* BLOCOS DE INFORMAÇÃO */
+.info-block {
+  width: 100%;
+  max-width: 640px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid var(--neon-green);
+  padding: 24px;
+  box-shadow: 0 0 20px rgba(98, 255, 138, 0.25);
+}
 
-    <section class="info-block">
-      <h2>Contato direto</h2>
-      <p>
-        Conversa simples, sem intermediários.
-      </p>
+/* TEXTOS */
+h1, h2 {
+  margin-bottom: 16px;
+  text-shadow: 0 0 8px var(--neon-green);
+}
 
-      <a class="whatsapp-btn" href="https://wa.me/5511978682202" target="_blank">
-        Falar no WhatsApp
-      </a>
+p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
 
-      <p class="pix">
-        Pix: <strong>11 97868-2202</strong>
-      </p>
-    </section>
+/* BOTÃO WHATSAPP */
+.whatsapp-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: var(--neon-green);
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px var(--neon-green);
+  transition: all 0.25s ease;
+}
 
-  </div>
+.whatsapp-btn:hover {
+  background: #000;
+  color: var(--neon-green);
+  outline: 1px solid var(--neon-green);
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+/* PIX */
+.pix {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
