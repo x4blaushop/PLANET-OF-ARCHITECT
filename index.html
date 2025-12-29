@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PLANET OF ARCHITECT</title>
 
   <style>
@@ -27,12 +27,12 @@
       padding: 40px 20px;
     }
 
-    /* BLOCOS PADRÃO DO PLANETA */
+    /* BLOCOS PADRÃO */
     .bloco {
       border: 1px solid rgba(0, 255, 150, 0.25);
       padding: 24px;
       margin-bottom: 48px;
-      border-radius: 18px; /* arredondamento moderno */
+      border-radius: 18px;
       background: rgba(0, 0, 0, 0.65);
     }
 
@@ -49,29 +49,46 @@
       opacity: 0.85;
     }
 
-    /* ===== BLOCO CYBORG (ISOLADO) ===== */
-    .cyborg-nucleo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 120px 0;
-      text-align: center;
+    /* BOTÕES DE LIGAÇÃO – PLANETA ARQUITETO */
+    .portal-button {
+      display: inline-block;
+      padding: 12px 24px;
+      margin: 10px 8px 0 0;
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: 500;
+
+      background: transparent;
+      border: 1.5px solid rgba(0, 255, 204, 0.6);
+      border-radius: 6px;
+
+      box-shadow:
+        0 0 8px rgba(0, 255, 204, 0.25),
+        inset 0 0 6px rgba(0, 255, 204, 0.15);
+
+      transition: all 0.25s ease;
     }
 
-    .cyborg-nucleo img {
-      max-width: 340px;
-      width: 80%;
-      opacity: 0.92;
-      filter: drop-shadow(0 0 28px rgba(0, 255, 150, 0.4));
+    .portal-button:hover {
+      color: #000;
+      background: rgba(0, 255, 204, 0.85);
+
+      box-shadow:
+        0 0 14px rgba(0, 255, 204, 0.9),
+        0 0 40px rgba(0, 255, 204, 0.4);
+
+      transform: translateY(-1px);
     }
 
-    .cyborg-frase {
-      margin-top: 28px;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      color: #7cffb2;
-      opacity: 0.75;
+    /* CANVAS MATRIX */
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
     }
 
     /* FOOTER */
@@ -85,15 +102,15 @@
 </head>
 
 <body>
+  <canvas id="matrix"></canvas>
 
   <main>
-
     <!-- BLOCO INTRODUÇÃO -->
     <section class="bloco">
       <h2>NÍVEL 0 — NÚCLEO</h2>
       <p>
-        O Planeta do Arquiteto não entrega conteúdo pronto.
-        Ele entrega estrutura.
+        O Planeta do Arquiteto não entrega conteúdo pronto.<br>
+        Ele entrega estrutura.<br>
         O preenchimento pertence ao humano.
       </p>
     </section>
@@ -102,36 +119,88 @@
     <section class="bloco">
       <h2>ARQUITETURA VIVA</h2>
       <p>
-        Cada bloco existe por necessidade.
-        Nada aqui é decorativo por acaso.
+        Cada bloco existe por necessidade.<br>
+        Nada aqui é decorativo por acaso.<br>
         Tudo pode ser removido sem colapso.
       </p>
     </section>
 
-    <!-- ===== INSERÇÃO DO CYBORG ===== -->
-    <section class="cyborg-nucleo">
-      <img src="cyborg.webp" alt="Núcleo do Arquiteto">
-      <p class="cyborg-frase">
-        “Se eu me calo, reflita, mas não significa o fim.”
-      </p>
+    <!-- BLOCO LIGAÇÃO -->
+    <section class="bloco">
+      <h2>LIGAÇÕES DIRETAS</h2>
+      <p>Portais ativos do sistema arquitetônico:</p>
+
+      <a href="https://x4blaushop.github.io/x4blau.shop/" target="_blank" class="portal-button">x4blau.shop</a>
+      <a href="https://x4blaushop.github.io/celula-do-dan/" target="_blank" class="portal-button">Célula do Dan</a>
+      <a href="https://x4blaushop.github.io/X4-DNA/" target="_blank" class="portal-button">X4-DNA</a>
     </section>
-    <!-- ===== FIM DO BLOCO CYBORG ===== -->
 
     <!-- BLOCO FINAL -->
     <section class="bloco">
       <h2>PROCESSO DE EVOLUÇÃO</h2>
       <p>
-        A estrutura permanece.
-        O sistema observa.
+        A estrutura permanece.<br>
+        O sistema observa.<br>
         O arquiteto decide quando avançar.
       </p>
     </section>
-
   </main>
 
   <footer>
     PLANET OF ARCHITECT — Núcleo Operacional
   </footer>
 
+  <!-- SCRIPT MATRIX -->
+  <script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+
+    const letters = "01";
+    const fontSize = 14;
+    let columns = canvas.width / fontSize;
+    let drops = [];
+
+    function initDrops() {
+      columns = Math.floor(canvas.width / fontSize);
+      drops = [];
+      for (let x = 0; x < columns; x++) {
+        drops[x] = Math.random() * canvas.height;
+      }
+    }
+
+    initDrops();
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#62ff8a";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 50);
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      initDrops();
+    });
+  </script>
 </body>
 </html>
