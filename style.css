@@ -39,17 +39,17 @@ body {
   align-items: center;
 }
 
-/* BLOCOS */
+/* BLOCOS — AQUI É O AJUSTE */
 .info-block {
   width: 100%;
   max-width: 640px;
   background: rgba(0, 0, 0, 0.75);
   border: 1px solid var(--neon-green);
-  padding: 24px;
+  padding: 28px;
   box-shadow: 0 0 20px rgba(98, 255, 138, 0.25);
 
-  /* ACABAMENTO — NÃO ESTRUTURAL */
-  border-radius: 12px;
+  /* ARREDONDAMENTO VISÍVEL */
+  border-radius: 22px;
 }
 
 /* TEXTOS */
@@ -67,7 +67,7 @@ p {
 .whatsapp-btn {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 20px;
+  padding: 14px 24px;
   background: var(--neon-green);
   color: #000;
   text-decoration: none;
@@ -76,7 +76,8 @@ p {
   box-shadow: 0 0 12px var(--neon-green);
   transition: all 0.25s ease;
 
-  border-radius: 10px;
+  /* BOTÃO MAIS ORGÂNICO */
+  border-radius: 18px;
 }
 
 .whatsapp-btn:hover {
