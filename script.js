@@ -8,17 +8,15 @@ function resize() {
 window.addEventListener("resize", resize);
 resize();
 
-const letters = "01010101";
-const fontSize = 16;
+const letters = "01";
+const fontSize = 18;
 let columns = Math.floor(canvas.width / fontSize);
 let drops = Array(columns).fill(1);
 
 function draw() {
-    // Fundo preto translúcido para criar o rastro
-    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Cor do DNA (Verde Neon)
     ctx.fillStyle = "#00ff9c";
     ctx.font = fontSize + "px monospace";
 
@@ -32,6 +30,4 @@ function draw() {
         drops[i]++;
     }
 }
-
-// Roda a Matrix
-setInterval(draw, 50);
+setInterval(draw, 60);
