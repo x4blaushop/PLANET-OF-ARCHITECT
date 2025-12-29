@@ -1,35 +1,39 @@
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
 
-const letras = "01";
-const tamanho = 14;
-const colunas = canvas.width / tamanho;
-const quedas = Array(Math.floor(colunas)).fill(0);
+const letters = "01";
+const fontSize = 14;
+let columns = Math.floor(canvas.width / fontSize);
+let drops = Array(columns).fill(1);
 
-function desenharMatrix() {
-  ctx.fillStyle = "rgba(0,0,0,0.05)";
+function drawMatrix() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.fillStyle = "#62ff8a";
-  ctx.font = tamanho + "px monospace";
+  ctx.font = fontSize + "px monospace";
 
-  quedas.forEach((y, i) => {
-    const texto = letras[Math.floor(Math.random() * letras.length)];
-    ctx.fillText(texto, i * tamanho, y * tamanho);
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-    if (y * tamanho > canvas.height && Math.random() > 0.975) {
-      quedas[i] = 0;
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
     }
-    quedas[i]++;
-  });
+    drops[i]++;
+  }
 }
 
-setInterval(desenharMatrix, 50);
+setInterval(drawMatrix, 50);
 
 window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  resize();
+  columns = Math.floor(canvas.width / fontSize);
+  drops = Array(columns).fill(1);
 });
