@@ -11,7 +11,6 @@ resizeCanvas();
 const letters = "01";
 const fontSize = 14;
 
-// +20% densidade
 let columns = Math.floor((canvas.width / fontSize) * 1.2);
 let drops = [];
 
@@ -29,7 +28,8 @@ function drawMatrix() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "#ff3b3b";
+  // CORRIGIDO PARA VERDE NÚCLEO
+  ctx.fillStyle = "#00ff9c"; 
   ctx.font = fontSize + "px monospace";
 
   for (let i = 0; i < drops.length; i++) {
