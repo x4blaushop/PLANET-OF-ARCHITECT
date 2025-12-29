@@ -1,65 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Planet of Architect</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Planet of Architect — Ambiente de criação digital">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
 
-  <!-- PLANETA / AMBIENTE -->
-  <canvas id="matrix"></canvas>
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-  <!-- CAMADA DE CONTEÚDO -->
-  <div class="planet-layer">
+const letters = "01";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = [];
 
-    <section class="info-block">
-      <h1>PLANET OF ARCHITECT</h1>
-      <p>
-        Este é um ambiente de criação digital.<br>
-        Aqui nascem sites simples, sólidos e livres.<br>
-        Nada é fechado. Nada é inflado. Tudo existe.
-      </p>
-    </section>
+for (let x = 0; x < columns; x++) {
+  drops[x] = 1;
+}
 
-    <section class="info-block">
-      <h2>O que é oferecido</h2>
-      <p>
-        • Sites institucionais simples<br>
-        • Sites informativos (jornal, revista, projetos)<br>
-        • Estruturas digitais para empresas<br>
-        • Ambientes estáveis, rápidos e independentes
-      </p>
-    </section>
+function drawMatrix() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    <section class="info-block">
-      <h2>Como funciona</h2>
-      <p>
-        Você recebe um site funcional.<br>
-        Pode editar, copiar, mover, hospedar onde quiser.<br>
-        Não depende de plataformas, mensalidades ou terceiros.
-      </p>
-    </section>
+  ctx.fillStyle = "#62ff8a";
+  ctx.font = fontSize + "px monospace";
 
-    <section class="info-block">
-      <h2>Contato direto</h2>
-      <p>
-        Conversa simples, sem intermediários.
-      </p>
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-      <a class="whatsapp-btn" href="https://wa.me/5511978682202" target="_blank">
-        Falar no WhatsApp
-      </a>
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
 
-      <p class="pix">
-        Pix: <strong>11 97868-2202</strong>
-      </p>
-    </section>
+setInterval(drawMatrix, 50);
 
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
