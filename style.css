@@ -1,7 +1,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #000; color: #00ff9c; font-family: monospace; overflow-x: hidden; }
 
-/* Força o efeito a ocupar a tela inteira no celular */
+/* O Matrix fica ao fundo e NÃO interfere nos cliques */
 #matrix { 
     position: fixed; 
     top: 0; 
@@ -9,12 +9,25 @@ body { background: #000; color: #00ff9c; font-family: monospace; overflow-x: hid
     width: 100vw; 
     height: 100vh; 
     z-index: -1; 
-    display: block;
+    pointer-events: none; /* ISSO FAZ OS BOTÕES VOLTAREM A FUNCIONAR */
 }
 
-main { position: relative; z-index: 1; max-width: 900px; margin: auto; padding: 40px 20px; }
-h1, h2 { color: #00ff9c; margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
+main { position: relative; z-index: 10; max-width: 900px; margin: auto; padding: 40px 20px; }
+h1, h2 { color: #00ff9c; margin-bottom: 12px; letter-spacing: 1px; }
 .section { border: 1px solid rgba(0,255,156,0.35); padding: 24px; margin-bottom: 30px; background: rgba(0,0,0,0.8); backdrop-filter: blur(2px); }
+
 .portals { display: flex; gap: 10px; flex-wrap: wrap; }
-.portal { border: 1px solid #00ff9c; padding: 10px 16px; text-decoration: none; color: #00ff9c; transition: 0.3s; }
+
+/* Botões com área de clique reforçada */
+.portal { 
+    border: 1px solid #00ff9c; 
+    padding: 12px 20px; 
+    text-decoration: none; 
+    color: #00ff9c; 
+    transition: 0.3s; 
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    z-index: 20; /* Garante que está no topo de tudo */
+}
 .portal:hover { background: #00ff9c; color: #000; }
