@@ -60,24 +60,29 @@ p {
   font-size: 0.95rem;
 }
 
-/* LINKS DAS CÉLULAS */
-.cell-links {
-  list-style: none;
-  margin-top: 16px;
+/* PORTAIS */
+.portal-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
 }
 
-.cell-links li {
-  margin-bottom: 8px;
-}
-
-.cell-links a {
-  color: var(--neon-green);
+.portal {
+  flex: 1;
+  min-width: 160px;
+  text-align: center;
+  padding: 14px;
+  border: 1px solid var(--neon-green);
   text-decoration: none;
-  border-bottom: 1px dashed var(--neon-green);
+  color: var(--neon-green);
+  box-shadow: 0 0 12px rgba(98, 255, 138, 0.4);
+  transition: all 0.25s ease;
 }
 
-.cell-links a:hover {
-  opacity: 0.8;
+.portal:hover {
+  background: var(--neon-green);
+  color: #000;
 }
 
 /* BOTÃO */
