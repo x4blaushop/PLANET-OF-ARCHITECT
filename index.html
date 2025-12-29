@@ -1,159 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Planeta do Arquiteto</title>
-
-<style>
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* BASE */
-html, body {
-  width: 100%;
-  min-height: 100%;
-  background: #000;
-  color: #ff2a2a;
-  font-family: monospace;
-  overflow-x: hidden;
-}
-
-/* MATRIX FUNDO (+20% densidade) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255,42,42,0.25) 0px,
-      rgba(255,42,42,0.25) 1px,
-      transparent 1px,
-      transparent 14px
-    );
-  opacity: 0.35;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* CONTAINER */
-main {
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
-  margin: auto;
-  padding: 60px 20px;
-}
-
-/* SEÇÕES */
-.section {
-  border: 1px solid rgba(255,42,42,0.45);
-  padding: 24px;
-  margin-bottom: 32px;
-  background: rgba(0,0,0,0.65);
-}
-
-/* TÍTULOS */
-h1, h2 {
-  margin-bottom: 14px;
-  letter-spacing: 1px;
-}
-
-/* TEXTO */
-p {
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-/* PORTAIS */
-.portals {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 14px;
-}
-
-.portal {
-  border: 1px solid #ff2a2a;
-  padding: 12px 18px;
-  text-decoration: none;
-  color: #ff2a2a;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.4s ease, background 0.4s ease;
-}
-
-.portal::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #ff2a2a;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-  z-index: -1;
-}
-
-.portal:hover::before {
-  transform: scaleX(1);
-}
-
-.portal:hover {
-  color: #000;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planeta do Arquiteto — NÚCLEO</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <canvas id="matrix" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
 
-<main>
+    <main>
+        <section class="section">
+            <h1>NÍVEL 0 — NÚCLEO</h1>
+            <p>
+                O Planeta do Arquiteto não entrega conteúdo pronto.<br>
+                Cada bloco existe por necessidade.<br>
+                O sistema observa.
+            </p>
+        </section>
 
-  <section class="section">
-    <h1>NÍVEL 0 — PORTA</h1>
-    <p>
-      Isto não é um conteúdo.<br>
-      É uma permissão de entrada.<br>
-      Quem entende, atravessa.
-    </p>
-  </section>
+        <section class="section">
+            <h2>ARQUITETURA VIVA</h2>
+            <p>
+                Nada aqui é decorativo por acaso.<br>
+                Tudo pode ser removido sem colapso.<br>
+                O arquiteto decide quando avançar.
+            </p>
+        </section>
 
-  <section class="section">
-    <h2>ARQUITETURA VIVA</h2>
-    <p>
-      Nada aqui existe para convencer.<br>
-      Tudo existe para sustentar.<br>
-      O sistema observa. O humano decide.
-    </p>
-  </section>
+        <section class="section">
+            <h2>LIGAÇÕES DIRETAS</h2>
+            <p>Portais ativos do sistema arquitetônico:</p>
+            <div class="portals">
+                <a class="portal" href="https://x4blau.shop" target="_blank">x4blau.shop</a>
+                <a class="portal" href="#" target="_blank">Célula do Dan</a>
+                <a class="portal" href="#" target="_blank">X4-DNA</a>
+            </div>
+        </section>
 
-  <section class="section">
-    <h2>PORTAIS</h2>
-    <p>Portais ativos do ecossistema:</p>
+        <section class="section">
+            <h2>PROCESSO DE EVOLUÇÃO</h2>
+            <p>
+                A estrutura permanece.<br>
+                O sistema observa.<br>
+                O arquiteto decide quando avançar.
+            </p>
+            <br>
+            <p>PLANETA DO ARQUITETO — DNA Original</p>
+        </section>
+    </main>
 
-    <div class="portals">
-      <a class="portal" href="https://x4blau.shop" target="_blank">x4blau.shop</a>
-      <a class="portal" href="#" target="_blank">Célula do Dan</a>
-      <a class="portal" href="#" target="_blank">X4-DNA</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>PROCESSO CONTÍNUO</h2>
-    <p>
-      A estrutura permanece.<br>
-      O planeta observa.<br>
-      O arquiteto avança quando decide.
-    </p>
-    <br>
-    <p>PLANETA DO ARQUITETO — Estrutura Ativa</p>
-  </section>
-
-</main>
-
+    <script src="script.js"></script>
 </body>
 </html>
