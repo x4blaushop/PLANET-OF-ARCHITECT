@@ -47,6 +47,9 @@ body {
   border: 1px solid var(--neon-green);
   padding: 24px;
   box-shadow: 0 0 20px rgba(98, 255, 138, 0.25);
+
+  /* ACABAMENTO — NÃO ESTRUTURAL */
+  border-radius: 12px;
 }
 
 /* TEXTOS */
@@ -58,31 +61,6 @@ h1, h2 {
 p {
   line-height: 1.6;
   font-size: 0.95rem;
-}
-
-/* PORTAIS */
-.portal-grid {
-  display: flex;
-  gap: 16px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.portal {
-  flex: 1;
-  min-width: 160px;
-  text-align: center;
-  padding: 14px;
-  border: 1px solid var(--neon-green);
-  text-decoration: none;
-  color: var(--neon-green);
-  box-shadow: 0 0 12px rgba(98, 255, 138, 0.4);
-  transition: all 0.25s ease;
-}
-
-.portal:hover {
-  background: var(--neon-green);
-  color: #000;
 }
 
 /* BOTÃO */
@@ -97,6 +75,8 @@ p {
   text-transform: uppercase;
   box-shadow: 0 0 12px var(--neon-green);
   transition: all 0.25s ease;
+
+  border-radius: 10px;
 }
 
 .whatsapp-btn:hover {
