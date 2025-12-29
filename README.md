@@ -1,4 +1,4 @@
-3ST4D0 Z3RO 4TR1O DO INF17INO
+ESTADO ZERO ATRIO DO INFINITO
 
 Este repositório não representa um site comum, um produto tradicional ou um sistema fechado.
 
